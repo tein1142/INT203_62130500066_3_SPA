@@ -1,5 +1,5 @@
 <template>
-<base-navbar />
+  <base-navbar />
   <div class="text-center">
     <h1>Login</h1>
     <p>Please fill in this form to Login your account.</p>
@@ -7,26 +7,30 @@
     <form @submit.prevent="submitLogin">
       <div class="boxregister">
         <label for="email"><b>Email</b></label>
-        <input
-          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          id="email"
-          v-model.trim="emailRegister"
+        <base-input 
+        patternValue="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+        type="text"
+        label="Enter Email"
+        nameValue="email"
+        idValue="email"
+        v-model.trim="emailRegister"     
         />
+        
         <p v-if="invalidEmailInput" class="text-red-600">
           Please Enter Your Email
         </p>
 
         <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          id="psw"
-          v-model.trim="pswRegister"
+        <base-input
+        patternValue=".{6,}"
+        type="password"
+        label="Enter Password"
+        nameValue="password"
+        idValue="password"
+        v-model.trim="pswRegister"
+
         />
+        
         <p v-if="invalidPasswordInput" class="text-red-600">
           Please Enter Your Password
         </p>
@@ -42,10 +46,12 @@
   </div>
 </template>
 
-<script>
-// import axios from "axios";
 
+
+
+<script>
 export default {
+  name: "Login",
   data() {
     return {
       urlRegisterData: "http://localhost:5000/registerData",
@@ -68,29 +74,24 @@ export default {
       this.invalidPasswordInput = this.pswRegister === "" ? true : false;
 
       for (let prop in this.registerData) {
-        console.log(this.registerData[prop])
+        console.log(this.registerData[prop]);
         if (
-          this.emailRegister === this.registerData[prop].emailRegis &&
-          this.pswRegister === this.registerData[prop].pswRegis
-
+          this.emailRegister === this.registerData[prop].emailRegister &&
+          this.pswRegister === this.registerData[prop].pswRegister
         ) {
           console.log("Login Sucsess.");
-          window.location.href = '/'
-        }else{
-          this.invalidUsernameOrPass = true
+          window.location.href = "/";
         }
       }
 
-           if(this.emailRegister != "" && this.pswRegister != ""){
+      if (this.emailRegister != "" && this.pswRegister != "") {
         this.invalidUsernameOrPass = true;
-          console.log("Login Failed.");
-         console.log(this.invalidUsernameOrPass);
-      }else{
+        console.log("Login Failed.");
+        console.log(this.invalidUsernameOrPass);
+      } else {
         this.invalidUsernameOrPass = false;
       }
-
     },
-    
   },
   async created() {
     this.registerData = await this.fetchDataRegis();
