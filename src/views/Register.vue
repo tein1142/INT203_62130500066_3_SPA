@@ -1,4 +1,6 @@
 <template>
+  <base-navbar/>
+
   <div class="text-center">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
@@ -43,18 +45,19 @@
         </p>
 
         <hr />
-        <p>
-          By creating an account you agree to our
-          <a href="#">Terms & Privacy</a>.
-        </p>
+        
 
         <button type="submit" class="registerbtn">Register</button>
       </div>
     </form>
 
-    <div class="signin">
-      <p>Already have an account? <a href="/Login">Sign in</a>.</p>
+    <div class="login">
+      <p>Already have an account? <a href="/Login">Login</a>.</p>
     </div>
+    <div class="forgot-password">
+      <p>Forgot Password? <a href="/forgotPass">Click</a>.</p>
+    </div>
+
   </div>
 </template>
 

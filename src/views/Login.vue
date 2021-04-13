@@ -1,4 +1,5 @@
 <template>
+<base-navbar />
   <div class="text-center">
     <h1>Login</h1>
     <p>Please fill in this form to Login your account.</p>
@@ -7,7 +8,7 @@
       <div class="boxregister">
         <label for="email"><b>Email</b></label>
         <input
-        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
           type="text"
           placeholder="Enter Email"
           name="email"
@@ -74,18 +75,22 @@ export default {
 
         ) {
           console.log("Login Sucsess.");
-          window.location.href = '/jjcry'
+          window.location.href = '/'
         }else{
           this.invalidUsernameOrPass = true
         }
       }
 
-    },
-    checkUernameOrPass(){
-      this.invalidUsernameOrPass = true;
+           if(this.emailRegister != "" && this.pswRegister != ""){
+        this.invalidUsernameOrPass = true;
           console.log("Login Failed.");
          console.log(this.invalidUsernameOrPass);
-    }
+      }else{
+        this.invalidUsernameOrPass = false;
+      }
+
+    },
+    
   },
   async created() {
     this.registerData = await this.fetchDataRegis();
