@@ -1,0 +1,34 @@
+{
+  "registerData": [
+    {
+      "emailRegis": "tein1142@hotmail.com",
+      "pswRegis": "tein1142",
+      "rePswRegis": "tein1142",
+      "id": 1
+    },
+    {
+      "emailRegis": "pantavit.925@mail.kmutt.ac.th",
+      "pswRegis": "tein1142",
+      "rePswRegis": "tein1142",
+      "id": 2
+    },
+    {
+      "emailRegis": "tein1150",
+      "pswRegis": "1150",
+      "rePswRegis": "1150",
+      "id": 3
+    },
+    {
+      "emailRegis": "tein1150@hotmail.com",
+      "pswRegis": "qwe",
+      "rePswRegis": "qwe",
+      "id": 4
+    },
+    {
+      "emailRegis": "atuidee@gmail.com",
+      "pswRegis": "011042",
+      "rePswRegis": "011042",
+      "id": 5
+    }
+  ]
+}
