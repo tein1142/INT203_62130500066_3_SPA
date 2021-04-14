@@ -1,28 +1,26 @@
 {
   "registerData": [
     {
+      "emailRegister": "",
+      "pswRegister": "",
+      "rePswRegister": "",
+      "id": 0
+    },
+    {
+      "questionForgotPass": "What animal do you like",
+      "answerForgotPass": "dog",
       "emailRegister": "tein1142@hotmail.com",
-      "pswRegister": "tein1142",
-      "rePswRegister": "tein1142",
+      "pswRegister": "",
+      "rePswRegister": "",
       "id": 1
     },
     {
+      "questionForgotPass": "What is the name of your old high school",
+      "answerForgotPass": "taweetha",
       "emailRegister": "pantavit.925@mail.kmutt.ac.th",
-      "pswRegister": "tein1142",
-      "rePswRegister": "tein1142",
+      "pswRegister": "",
+      "rePswRegister": "",
       "id": 2
-    },
-    {
-      "emailRegister": "tein1150@hotmail.com",
-      "pswRegister": "tein1142",
-      "rePswRegister": "tein1142",
-      "id": 3
-    },
-    {
-      "emailRegister": "lengleng9090@hotmail.com",
-      "pswRegister": "leng1150",
-      "rePswRegister": "leng1150",
-      "id": 4
     }
   ]
 }

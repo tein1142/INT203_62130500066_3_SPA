@@ -10,6 +10,9 @@
       <div class="shapebtn">
         <router-link to="/register">Register</router-link>
       </div>
+      <div class="shapebtn">
+        <router-link to="/forgotpass">Forgot Password</router-link>
+      </div>
     </div>
   </div>
   <router-view />

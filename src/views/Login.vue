@@ -7,30 +7,31 @@
     <form @submit.prevent="submitLogin">
       <div class="boxregister">
         <label for="email"><b>Email</b></label>
-        <base-input 
-        patternValue="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
-        type="text"
-        label="Enter Email"
-        nameValue="email"
-        idValue="email"
-        v-model.trim="emailRegister"     
+        <base-input
+          patternValue="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          type="text"
+          label="Enter Email"
+          nameValue="email"
+          idValue="email"
+          v-model.trim="emailRegister"
         />
-        
+
         <p v-if="invalidEmailInput" class="text-red-600">
           Please Enter Your Email
         </p>
 
         <label for="psw"><b>Password</b></label>
         <base-input
-        patternValue=".{6,}"
-        type="password"
-        label="Enter Password"
-        nameValue="password"
-        idValue="password"
-        v-model.trim="pswRegister"
-
+          patternValue=".{6,}"
+          type="password"
+          label="Enter Password"
+          nameValue="password"
+          idValue="password"
+          v-model.trim="pswRegister"
         />
-        
+        <p v-if="invalidUsernameOrPass" class="text-red-600">
+          Username or Password is Wrong
+        </p>
         <p v-if="invalidPasswordInput" class="text-red-600">
           Please Enter Your Password
         </p>
@@ -38,16 +39,15 @@
 
         <button type="submit" class="registerbtn">Login</button>
 
-        <p v-if="invalidUsernameOrPass" class="text-red-600">
-          Username or Password is Wrong
-        </p>
+        
+
+        <div class="forgot-password">
+          <p><b>Forgot Password? </b><a href="/forgotpass"><b>Click</b></a>.</p>
+        </div>
       </div>
     </form>
   </div>
 </template>
-
-
-
 
 <script>
 export default {

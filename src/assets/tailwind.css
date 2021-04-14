@@ -4,9 +4,7 @@
 
 @tailwind utilities;
 
-/* #btncircle {
-  @apply m-5 rounded-full py-3 px-6 bg-green-300 ;
-} */
+
 @layer base {
   h1 {
     @apply text-3xl;
@@ -84,6 +82,3 @@ a {
 }
 
 
-/* .navbar{
-   @apply top-0 bg-white relative left-0 fixed right-0 z-30 
-  } */
