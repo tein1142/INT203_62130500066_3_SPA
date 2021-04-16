@@ -5,7 +5,7 @@
     <p>Please fill in this form to create an account.</p>
     <hr />
     <form @submit.prevent="submitRegister" id="submitForm">
-      <div class="boxregister">
+      <div class="boxinput">
         <label for="email"><b>Email</b></label>
         <base-input
           patternValue="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -76,7 +76,7 @@
 
         <hr />
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="btn">Register</button>
       </div>
     </form>
 

@@ -2,16 +2,10 @@
   <div id="nav">
     <div class="flex-justify">
       <div class="shapebtn">
-        <router-link to="/">Home</router-link>
-      </div>
-      <div class="shapebtn">
         <router-link to="/login">Login</router-link>
       </div>
       <div class="shapebtn">
-        <router-link to="/register">Register</router-link>
-      </div>
-      <div class="shapebtn">
-        <router-link to="/forgotpass">Forgot Password</router-link>
+        <router-link to="/">Register</router-link>
       </div>
     </div>
   </div>

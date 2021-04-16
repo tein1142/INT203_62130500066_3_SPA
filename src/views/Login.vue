@@ -5,7 +5,7 @@
     <p>Please fill in this form to Login your account.</p>
     <hr />
     <form @submit.prevent="submitLogin">
-      <div class="boxregister">
+      <div class="boxinput">
         <label for="email"><b>Email</b></label>
         <base-input
           patternValue="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -37,7 +37,7 @@
         </p>
         <hr />
 
-        <button type="submit" class="registerbtn">Login</button>
+        <button type="submit" class="btn">Login</button>
 
         
 
@@ -80,14 +80,13 @@ export default {
           this.pswRegister === this.registerData[prop].pswRegister
         ) {
           console.log("Login Sucsess.");
-          window.location.href = "/";
+          window.location.href = "/profile";
         }
       }
 
       if (this.emailRegister != "" && this.pswRegister != "") {
         this.invalidUsernameOrPass = true;
         console.log("Login Failed.");
-        console.log(this.invalidUsernameOrPass);
       } else {
         this.invalidUsernameOrPass = false;
       }

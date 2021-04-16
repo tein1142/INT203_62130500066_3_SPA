@@ -6,7 +6,7 @@
     <p>Please fill in this form to change password your account.</p>
     <hr />
     <form @submit.prevent="submitForgotPassword">
-      <div class="boxregister">
+      <div class="boxinput">
         <label for="email"><b>Email</b></label>
         <base-input
           patternValue="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -20,15 +20,12 @@
         <p v-if="invalidEmailInput" class="text-red-600">
           Please Enter Your Email
         </p>
-
+        
         <p><b>Answer Your Question</b></p>
 
         <b v-if="showQuestion()">
           {{ showQuestion() + " ?" }}
         </b>
-        
-
-
 
         <base-input
           type="text"
@@ -36,8 +33,10 @@
           label="Enter Your Answer"
           v-model.trim="answerForgotPass"
         />
-
-        
+        <p v-if="invalidAnswer" class="text-red-600">
+          Answer is wrong
+        </p>
+        {{ answerIsCorrect }}
         <div v-if="answerIsCorrect">
           <label for="psw"><b>New Password</b></label>
           <base-input
@@ -48,9 +47,7 @@
             idValue="password"
             v-model.trim="pswRegister"
           />
-          <p v-if="invalidPasswordInput" class="text-red-600">
-            Please Enter Your Password
-          </p>
+          
           <label for="psw-repeat"><b>Repeat Password</b></label>
 
           <base-input
@@ -68,17 +65,15 @@
 
         <hr />
 
-        <button type="submit" class="registerbtn">Summit</button>
+        <button type="submit" class="btn">Summit</button>
 
-        <p v-if="invalidUsernameOrPass" class="text-red-600">
-          Username or Password is Wrong
-        </p>
+        
       </div>
     </form>
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   data() {
     return {
@@ -86,6 +81,8 @@ export default {
       answerIsCorrect: false,
       invalidEmailInput: false,
       invalidQuestionInput: false,
+      invalidRepeatPassword:false,
+      invalidAnswer:false,
       emailRegister: "",
       questionForgotPass: "",
       answerForgotPass: "",
@@ -104,39 +101,40 @@ export default {
     submitForgotPassword() {
       this.invalidEmailInput = this.emailRegister === "" ? true : false;
 
-      for (let prop in this.registerData) {
-        if (
-          this.emailRegister != ""
-        ) {   
-
-          this.answerIsCorrect = true;
-          axios.patch(this.urlForgotPassData+"/"+this.registerData[prop].id,
-          {
-              pswRegister: this.pswRegister ,
-              rePswRegister: this.rePswRegister
-          }
-          ).then((response) => {
-              console.log(response)
-          })
-        } else {
-          this.answerIsCorrect = false;
+           if(this.pswRegister != this.rePswRegister){
+                this.invalidRepeatPassword = true
+           } else{
+               this.invalidRepeatPassword = false
+           }
+        
+        for(let prop in this.registerData){
+            this.answerIsCorrect = true
+            if(this.answerForgotPass === this.registerData[prop].answerForgotPass && this.pswRegister === this.rePswRegister){
+            axios.patch(this.urlForgotPassData+"/" +this.registerData[prop].id,{
+           pswRegister: this.pswRegister,
+           rePswRegister: this.rePswRegister,
+      }).then(res => {
+          console.log(res)
+        //   window.location.href = "/login"
+      })
+       }else{
+           this.answerIsCorrect = false;
+           this.invalidAnswer = true;
+       }
         }
-      }
-       
     },
 
     showQuestion() {
+      for (let prop in this.registerData) {
+        if (this.emailRegister === this.registerData[prop].emailRegister) {
+          return this.registerData[prop].questionForgotPass;
+        }
+      }
+
       if (this.emailRegister === "") {
         this.invalidQuestionInput = true;
       } else {
         this.invalidQuestionInput = false;
-      }
-
-      for (let prop in this.registerData) {
-        // console.log(this.registerData[prop]);
-        if (this.emailRegister === this.registerData[prop].emailRegister) {
-          return this.registerData[prop].questionForgotPass;
-        }
       }
     },
   },

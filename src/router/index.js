@@ -5,12 +5,12 @@ import {
 // import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
-import Home from '../views/Home.vue'
+import Profile from '../views/Profile.vue'
 import ForgotPass from '../views/ForgotPass.vue'
 const routes = [{
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
   {
     path: '/login',
@@ -18,7 +18,7 @@ const routes = [{
     component: Login
   },
   {
-    path: '/register',
+    path: '/',
     name: 'Register',
     component: Register
   },
@@ -26,7 +26,10 @@ const routes = [{
     path: '/forgotpass',
     name: 'ForgotPass',
     component: ForgotPass
-  }
+  },
+
+  
+
 ]
 
 const router = createRouter({
